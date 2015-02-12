@@ -333,8 +333,8 @@ textarea {
     margin:0;
     color:#555;
     text-align:left;
-    font-size: 28px;
-    font-weight: 600;
+    font-size: 25px;
+    font-weight: 500;
 }
 .post-title a {
     color:#666;
@@ -694,7 +694,7 @@ textarea.textarea {
 }
 #footer {
     padding:.8em 0 3.6em;
-    line-height:1.2;
+    line-height:1.4;
     color:#999;
     text-align: center;
 }
