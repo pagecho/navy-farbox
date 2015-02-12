@@ -1,0 +1,8 @@
+if paginator.has_pre or paginator.has_next
+	ol.page-navigator
+		if paginator.has_pre
+			li
+				a.prev-page(href=paginator.pre_url) 上一页
+		if paginator.has_next
+			li
+				a.next-page(href=paginator.next_url) 下一页

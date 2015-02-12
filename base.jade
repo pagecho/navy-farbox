@@ -1,0 +1,53 @@
+html
+	head
+		+mobile_meta()
+		meta(name="keywords", content=site.configs.keywords.escaped)
+		meta(name="description", content=site.raw_content.escaped)
+		block title
+			title= request.args.s or post.title or tags.join('+') or category.title or site.title
+		load('fonts http://cdn.staticfile.org/normalize/3.0.1/normalize.min.css /template/blog/style.css')
+	body
+		.side-click-mask
+		.move-block
+			header#header.clearfix
+				.container
+					.col-group
+						.site-name
+							a#logo(href='/')= site.title
+							if request.path == '/'
+								h1.title= site.title
+							p.description= site.raw_content
+						nav#nav-menu
+							ul
+								li
+									<a href="/"  {% if request.path != '/about.md' and request.path != '/archive' %}class="current"{% endif %}>首页</a>
+								li
+									<a href="/archive"  {% if request.path == '/archive' %}class="current"{% endif %}>归档</a>
+								{% if has('about.md') %}
+		                        li
+		                        	<a href="/about.md" {% if request.path == '/about.md' %}class="current"{% endif %}>关于</a>
+		                        {% endif %}
+			button.side-click.icon-arrow-down
+			#body
+				block content
+			#secondary
+				.sidebar
+					section.widget
+						.widget-title= '最新文章'
+						sideentries = get_data(type='post', page=1, limit=8, sort='desc', with_page=False)
+						ul.widget-list.widget-list2
+							for post in sideentries
+								li
+									h3
+										a(href=post.url, title=post.title)
+											span.date-day= post.date.format("%d")
+											span.date-month= post.date.format("/%b")
+											post.title
+			footer#footer
+				.container= '© 2015 '
+					a(href='/', real="nofollow")= site.title
+					<br>
+					span= 'Powered by <a rel="nofollow" href="https://www.farbox.com">farbox</a>'
+		+load('jquery')
+		+load('/template/blog/index.js')
+		+load('script.coffee')

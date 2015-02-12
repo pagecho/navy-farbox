@@ -1,0 +1,17 @@
+extends base
+block title
+	title= "关于 - " + site.title
+block content
+	.container
+		.col-group
+			#main.col-8
+				.res-cons
+					article.post
+						header
+							h1.post-title= '关于'
+						section.post-content= '<p>你好。</p>'
+						footer.post-footer
+							section.author
+								.author-ava
+									img(src= site.avatar)
+							p= site.raw_content

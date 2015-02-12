@@ -1,0 +1,14 @@
+extends base
+block title
+	title= post.title + " - " + site.title
+block content
+	.container
+		.col-group
+			#main.col-8
+				.res-cons
+					article.post
+						date.post-meta= post.date.format('%B %d, %Y')
+						header
+							h1.post-title= post.title
+						section.post-content= post.content
+					include include/comments.jade
